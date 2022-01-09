@@ -87,7 +87,9 @@ header > .container {
   transition: 0.5s;
 }
 
-.navigation-link:hover {
+.navigation-link:hover,
+.github-link:hover,
+.rss-link:hover {
   color: #BDAE82;
 }
 
@@ -125,4 +127,73 @@ header > .container {
 .english,
 .russian {
   cursor: pointer;
+}
+
+footer > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+}
+
+.footer-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 182px;
+  height: 50px;
+  padding-right: 13px;
+}
+
+.github-link,
+.rss-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.rss > span {
+  padding: 12.335px 0;
+}
+
+.social-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 188px;
+  height: 50px;
+}
+
+.instagram {
+  background-image: url('./assets/svg/instagram.svg');
+}
+
+.facebook {
+  background-image: url('./assets/svg/facebook.svg');
+}
+
+.twitter {
+  background-image: url('./assets/svg/twitter.svg');
+}
+
+.pinterest {
+  background-image: url('./assets/svg/pinterest.svg');
+}
+
+.instagram,
+.facebook,
+.twitter,
+.pinterest {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat; 
+  cursor: pointer; 
+  transition: 0.5s;
+}
+
+.instagram:hover,
+.facebook:hover,
+.twitter:hover,
+.pinterest:hover {
+  filter: invert(25%) sepia(32%) saturate(314%) hue-rotate(5deg) brightness(96%) contrast(86%);
 }
