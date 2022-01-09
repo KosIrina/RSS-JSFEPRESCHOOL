@@ -44,6 +44,51 @@ body {
   padding: 0 20px;
 }
 
+.line {
+  width: 700px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+h2 {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 100px 20px 60px 20px;
+  font-family: Merriweather, serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 80px;
+  text-align: center;
+  color: #BDAE82;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  content: '';
+  border-bottom: 2px solid #BDAE82;
+  top:140px;
+  left: -700px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  content: '';
+  border-bottom: 2px solid #BDAE82;
+  top:140px;
+  right: -700px;
+}
+
+
+
+p {
+  margin: 0;
+}
+
 header > .container {
   display: flex;
   justify-content: space-between;
@@ -185,6 +230,80 @@ header > .container {
 
 .hero-button:hover {
   color: #FFFFFF;
+}
+
+#skills {
+  height: 482px;
+}
+
+.skills-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 242px;
+}
+
+.skills-items > div {
+  position: relative;
+  width: 320px;
+  height: 240px;
+  text-align: center;
+}
+
+.skill-name {
+  position: absolute;
+  left: 20px;
+  top: 100px;
+  width: 280px;
+  height: 40px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.skill-text {
+  position: absolute;
+  left: 20px;
+  top: 160px;
+  width: 280px;
+  height: 72px;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.digital-photography::before,
+.video-shooting::before,
+.retouch::before,
+.audio::before
+{
+  content: "";
+  position: absolute;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.digital-photography::before {
+  left: 129px;
+  width: 62px;
+  background-image: url('./assets/svg/camera.svg');
+}
+
+.video-shooting::before {
+  left: 130px;
+  width: 60px;
+  background-image: url('./assets/svg/video.svg');
+}
+
+.retouch::before {
+  left: 127px;
+  width: 66px;
+  background-image: url('./assets/svg/image.svg');
+}
+
+.audio::before {
+  left: 144px;
+  width: 32px;
+  background-image: url('./assets/svg/mic.svg');
 }
 
 footer > .container {
