@@ -363,6 +363,33 @@ header > .container {
   cursor: pointer;
 }
 
+#video {
+  height: 945px;
+}
+
+.video-player {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-play {
+  position: absolute;
+  width: 129.86px;
+  height: 130px;
+  border: 0;
+  padding: 0;
+  background-image: url(./assets/svg/play_unvisited.svg);
+  background-color: transparent;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.button-play:hover {
+  background-image: url(./assets/svg/play_hover.svg);
+}
+
 footer > .container {
   display: flex;
   justify-content: space-between;
