@@ -63,7 +63,7 @@ h2 {
   color: #BDAE82;
 }
 
-h2::before {
+.line > h2::before {
   content: '';
   position: absolute;
   width: 700px;
@@ -73,7 +73,7 @@ h2::before {
   left: -700px;
 }
 
-h2::after {
+.line > h2::after {
   content: '';
   position: absolute;
   width: 700px;
@@ -223,7 +223,8 @@ header > .container {
 }
 
 .hero-button,
-.price-button {
+.price-button,
+.message-button {
   width: 220px;
   height: 55px;
   border: 0;
@@ -239,7 +240,8 @@ header > .container {
 }
 
 .hero-button:hover,
-.price-button:hover {
+.price-button:hover,
+.message-button:hover {
   color: #FFFFFF;
 }
 
@@ -450,6 +452,91 @@ header > .container {
   font-weight: 700;
   font-size: 24px;
   line-height: 48px;
+  color: #BDAE82;
+}
+
+.contacts-section-container {
+  width: 1440px;
+  height: 700px;
+  margin: 0 auto;
+  background: url('./assets/jpeg/contacts.jpg');
+  background-size: auto 700px;
+  background-position: center center;
+}
+
+.contacts-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 450px;
+  height: 445px;
+  margin: 0 20px 0 auto;
+  padding-top: 60px; 
+  box-sizing: content-box;
+}
+
+.contacts-container > h2 {
+  width: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.e-mail {
+  position: absolute;
+  top: 180px;
+  width: 450px;
+  height: 50px;
+}
+
+.phone {
+  position: absolute;
+  top: 250px;
+  width: 450px;
+  height: 50px;
+}
+
+.message {
+  position: absolute;
+  top: 320px;
+  width: 450px;
+  height: 100px;
+}
+
+.message-button {
+  position: absolute;
+  top: 450px;
+}
+
+input {
+  width: 450px;
+  height: 50px;
+  padding: 0;
+  background-color: #000000;
+  opacity: 50%;
+  border: 2px solid #BDAE82;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 450px;
+  height: 100px;
+  padding: 0;
+  background-color: #000000;
+  opacity: 50%;
+  border: 2px solid #BDAE82;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+}
+
+::placeholder {
+  padding: 5px 0 0 20px;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 400;
   color: #BDAE82;
 }
 
