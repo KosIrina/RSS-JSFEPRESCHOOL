@@ -83,8 +83,6 @@ h2::after {
   right: -700px;
 }
 
-
-
 p {
   margin: 0;
 }
@@ -304,6 +302,65 @@ header > .container {
   left: 144px;
   width: 32px;
   background-image: url('./assets/svg/mic.svg');
+}
+
+#portfolio {
+  height: 1500px;
+}
+
+.portfolio-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 895px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.portfolio-buttons > button {
+  width: 220px;
+  height: 55px;
+  border: 2px solid #BDAE82;
+  box-sizing: border-box;
+  padding: 0;
+  background-color: transparent;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+  color: #BDAE82;
+  cursor: pointer;
+}
+
+.portfolio-buttons > .button-autumn {
+  background-color: #BDAE82;
+  color: #000000;
+}
+
+.portfolio-buttons > button:hover {
+  color: #FFFFFF;
+}
+
+.portfolio-items {
+  height: 1145px;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.portfolio-items > img {
+  width: 450px;
+  height: 560px;
+}
+
+.portfolio-items > img:hover {
+  filter: blur(1px) opacity(80%);
+  cursor: pointer;
 }
 
 footer > .container {
