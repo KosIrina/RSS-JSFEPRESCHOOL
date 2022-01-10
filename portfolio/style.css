@@ -83,6 +83,17 @@ h2::after {
   right: -700px;
 }
 
+h3 {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 43px 0 20px 0;
+  font-family: Merriweather, serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 56px;
+  color: #FFFFFF;
+}
+
 p {
   margin: 0;
 }
@@ -211,7 +222,8 @@ header > .container {
   line-height: 40px;
 }
 
-.hero-button {
+.hero-button,
+.price-button {
   width: 220px;
   height: 55px;
   border: 0;
@@ -226,7 +238,8 @@ header > .container {
   cursor: pointer;
 }
 
-.hero-button:hover {
+.hero-button:hover,
+.price-button:hover {
   color: #FFFFFF;
 }
 
@@ -382,12 +395,62 @@ header > .container {
   padding: 0;
   background-image: url(./assets/svg/play_unvisited.svg);
   background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
   color: #FFFFFF;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .button-play:hover {
-  background-image: url(./assets/svg/play_hover.svg);
+  filter: invert(24%) sepia(19%) saturate(506%) hue-rotate(7deg) brightness(89%) contrast(91%);
+}
+
+#price {
+  height: 845px;
+}
+
+.price-items {
+  display: flex;
+  justify-content: space-between;
+  height: 505px;
+  text-align: center;
+}
+
+.standard,
+.premium,
+.gold {
+  width: 450px;
+  box-sizing: border-box;
+  border: 3px solid #BDAE82;
+}
+
+.standard-description,
+.premium-description,
+.gold-description {
+  width: 364px;
+  margin: 0 auto;
+  padding: 20px 0 40px 0;
+}
+
+.standard-description > span,
+.premium-description > span,
+.gold-description > span {
+  display: block;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.standard-price,
+.premium-price,
+.gold-price {
+  width: fit-content;
+  margin: 0 auto;
+  font-family: Merriweather, serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 48px;
+  color: #BDAE82;
 }
 
 footer > .container {
