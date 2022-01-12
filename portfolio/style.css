@@ -35,7 +35,8 @@ body {
   font-weight: 400; 
   font-size: 20px;
   line-height: 50px; 
-  color: #ffffff;
+  text-align: left;
+  color: #FFFFFF;
 }
 
 .container {
@@ -86,7 +87,7 @@ h2 {
 h3 {
   width: fit-content;
   margin: 0 auto;
-  padding: 43px 0 20px 0;
+  padding: 40px 0 20px 0;
   font-family: Merriweather, serif;
   font-weight: 700;
   font-size: 28px;
@@ -138,7 +139,7 @@ header > .container {
 
 .navigation-link {
   position: relative;
-  color: #ffffff;
+  color: #FFFFFF;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -167,6 +168,9 @@ header > .container {
 }
 
 .language-switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 70px;
   height: 50px;
 }
@@ -219,6 +223,8 @@ header > .container {
   width: 470px;
   height: 120px;
   margin: 0;
+  padding: 10px 0 25px 0;
+  box-sizing: content-box;
   line-height: 40px;
 }
 
@@ -237,6 +243,7 @@ header > .container {
   text-align: center;
   color: #000000;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .hero-button:hover,
@@ -346,6 +353,7 @@ header > .container {
   text-align: center;
   color: #BDAE82;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .portfolio-buttons > .button-autumn {
@@ -371,6 +379,7 @@ header > .container {
 .portfolio-items > img {
   width: 450px;
   height: 560px;
+  transition: 0.5s;
 }
 
 .portfolio-items > img:hover {
@@ -391,6 +400,8 @@ header > .container {
 
 .button-play {
   position: absolute;
+  top: 288px;
+  left: 636px;
   width: 129.86px;
   height: 130px;
   border: 0;
@@ -510,29 +521,37 @@ header > .container {
 }
 
 input {
+  position: relative;
   width: 450px;
   height: 50px;
-  padding: 0;
-  background-color: #000000;
-  opacity: 50%;
+  padding: 0 0 0 19px;
+  background-color: rgba(0, 0, 0, 0.5); 
   border: 2px solid #BDAE82;
   box-sizing: border-box;
+  border-radius: 0;
+  font: inherit;
+  color: #FFFFFF;
 }
 
 textarea {
+  position: relative;
   width: 450px;
   height: 100px;
-  padding: 0;
-  background-color: #000000;
-  opacity: 50%;
+  padding: 0 0 0 19px;
+  background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid #BDAE82;
   box-sizing: border-box;
   resize: none;
   overflow: hidden;
+  border-radius: 0;
+  font: inherit;
+  color: #FFFFFF;
 }
 
 ::placeholder {
-  padding: 5px 0 0 20px;
+  position: absolute;
+  left: 18px;
+  top: 3px;
   font-family: Inter, sans-serif;
   font-size: 20px;
   line-height: 40px;
@@ -556,13 +575,20 @@ footer > .container {
   padding-right: 13px;
 }
 
+.rss {
+  margin: 0 406px 0 413px;
+}
+
 .github-link,
 .rss-link {
-  color: #ffffff;
+  color: #FFFFFF;
   text-decoration: none;
+  transition: 0.5s;
 }
 
 .rss > span {
+  display: block;
+  width: 211px;
   padding: 12.335px 0;
 }
 
@@ -570,8 +596,11 @@ footer > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
+  padding: 0;
   width: 188px;
   height: 50px;
+  list-style: none;
 }
 
 .instagram {
