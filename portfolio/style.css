@@ -16,6 +16,70 @@
   font-weight: 700;
 }
 
+@media (max-width: 1439px) {
+  .container > #skills,
+  #skills > .skills-items,
+  .container > #portfolio,
+  #portfolio > .portfolio-items,
+  .container > #video,
+  .container > #price,
+  #price > .price-items {
+    height: auto;
+  }
+  
+  #skills > .skills-items {
+    min-height: 533px;
+    justify-content: center;
+  }
+
+  #portfolio > .portfolio-buttons {
+    max-width: 445px;
+  }
+
+  #portfolio > .portfolio-buttons > .button-winter, .button-spring {
+    margin-bottom: 5px;
+  }
+
+  #portfolio > .portfolio-items {
+    justify-content: space-evenly;
+  }
+
+  #portfolio > .portfolio-items > .img1, .img2, .img3, .img4, .img5, .img6 {
+    margin-bottom: 25px;
+  }
+
+  #price > .price-items {
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+
+  #price > .price-items > .standard, 
+  #price > .price-items > .premium, 
+  #price > .price-items > .gold {
+    min-width: 420px;
+    min-height: 505px;
+    width: auto;
+  }
+
+  #price > .price-items > .standard, 
+  #price > .price-items > .premium,
+  #price > .price-items > .gold {
+    margin-bottom: 50px;
+  }
+
+  #price > .price-items > .standard {
+    margin-right: 25px;
+  }
+ 
+  #price > .price-items > .gold {
+    margin-left: 25px;
+  }
+
+  .footer > .container > .rss {
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
   .header > .container,
   .main > .container,
@@ -60,6 +124,7 @@
   #hero {
     justify-content: flex-start;
     max-width: 768px;
+    width: auto;
     height: 500px;
     margin-left: 60px;    
     top: 0;
@@ -80,16 +145,6 @@
     padding: 20px 0 59px 0; 
     box-sizing: content-box;
     line-height: 24.2px;
-  }
-
-  .container > #skills,
-  #skills > .skills-items,
-  .container > #portfolio,
-  #portfolio > .portfolio-items,
-  .container > #video,
-  .container > #price,
-  #price > .price-items {
-    height: auto;
   }
 
   .line > h2 {
@@ -114,7 +169,6 @@
   }
 
   #skills > .skills-items {
-    min-height: 533px;
     padding: 9px 20px 40px 20px;
     justify-content: flex-start;
   }
@@ -152,27 +206,13 @@
     line-height: 22px;
   }
 
-  #portfolio > .portfolio-buttons {
-    max-width: 445px;
-    flex-wrap: wrap;
-  }
-
-  #portfolio > .portfolio-buttons > .button-winter, .button-spring {
-    margin-bottom: 5px;
-  }
-
-  #portfolio > .portfolio-items {
-    justify-content: center;
-  }
-
-  #portfolio > .portfolio-items > .img1, .img2, .img3, .img4, .img5 {
-    margin-bottom: 25px;
+  #portfolio > .portfolio-items > .img6 {
+    margin-bottom: 0;
   }
 
   #video > .video-player {
     max-width: 768px;
-    width: auto;
-    height: 418px;
+    max-height: 418px;
     background-image: url(./assets/jpeg/video-player-tablet.jpg);
     background-size: auto;
     background-position: center center;     
@@ -180,30 +220,16 @@
   }
 
   .video-player > .button-play {
-    top: auto;
-    left: auto;
-    z-index: 100;
     width: 64.62px;
     height: 64.69px;    
   }
 
-  #price > .price-items {
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 80px;
-  }
-
-  #price > .price-items > .standard, 
-  #price > .price-items > .premium, 
   #price > .price-items > .gold {
-    min-width: 420px;
-    min-height: 505px;
-    width: auto;
+    margin: 0;
   }
 
-  #price > .price-items > .standard, 
-  #price > .price-items > .premium {
-    margin-bottom: 50px;
+  #price > .price-items > .standard {
+    margin-right: 0;
   }
 
   #contacts,
@@ -271,6 +297,101 @@
     box-sizing: content-box;
   }
 
+}
+
+@media (max-width: 713px) {
+  #skills > .skills-items {
+    justify-content: center;
+  }
+
+  #skills > .skills-items > .digital-photography,
+  #skills > .skills-items > .retouch,
+  #skills > .skills-items > .video-shooting,
+  #skills > .skills-items > .audio {
+    margin: 0;
+  }
+
+  #skills > .skills-items > .digital-photography::before {
+    left: 109px;
+  }
+
+  #skills > .skills-items > .video-shooting::before {
+    left: 110px;
+  }
+
+  #skills > .skills-items > .retouch::before {
+    left: 107px;
+  }
+
+  #skills > .skills-items > .audio::before {
+    left: 124px;
+  }
+
+  #skills > .skills-items > .digital-photography > .skill-name, 
+  #skills > .skills-items > .video-shooting > .skill-name,
+  #skills > .skills-items > .retouch > .skill-name,
+  #skills > .skills-items > .audio > .skill-name {
+    left: 0;
+  }
+
+  #skills > .skills-items > .digital-photography > .skill-text, 
+  #skills > .skills-items > .video-shooting > .skill-text,
+  #skills > .skills-items > .retouch > .skill-text,
+  #skills > .skills-items > .audio > .skill-text {
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section > .line {
+    width: 300px;
+  }
+
+  #portfolio > .portfolio-buttons {
+    justify-content: center;
+  }
+
+  #portfolio > .portfolio-buttons > .button-summer, .button-autumn {
+    margin-bottom: 5px;
+  }
+
+  #portfolio > .portfolio-items > img {
+    max-width: 300px;
+    height: auto;
+  }
+
+  #video > .video-player {
+    max-width: 500px;
+    max-height: 350px;
+  }
+  
+  #price > .price-items > .standard, 
+  #price > .price-items > .premium, 
+  #price > .price-items > .gold {
+    min-width: 300px;
+    max-height: 400px;  
+  }
+
+  #price > .price-items > .standard > .standard-description, 
+  #price > .price-items > .premium > .premium-description, 
+  #price > .price-items > .gold > .gold-description {
+    max-width: 300px;  
+  }
+
+  #contacts > .contacts-container {
+    max-width: 300px;
+  }
+  #contacts > .contacts-container > h2 {
+    max-width: 300px;
+  }
+
+  #contacts > .contacts-container > form {
+    max-width: 300px;
+  }
+
+  #contacts > .contacts-container > form > input, textarea {
+    max-width: 300px;
+  }
 }
 
 * {
@@ -462,7 +583,7 @@ header > .container {
   justify-content: space-between;
   position: absolute;
   top: 160px;
-  width: 500px;
+  max-width: 500px;
   height: 330px;
   margin-left: 80px;
   
@@ -477,7 +598,7 @@ header > .container {
 }
 
 .hero-text {
-  width: 470px;
+  max-width: 470px;
   height: 120px;
   margin: 0;
   padding: 10px 0 25px 0;
@@ -591,7 +712,8 @@ header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 895px;
+  flex-wrap: wrap;
+  max-width: 895px;
   margin: 0 auto;
   padding-bottom: 60px;
 }
@@ -649,7 +771,8 @@ header > .container {
 }
 
 .video-player {
-  width: 1400px;
+  max-width: 1400px;
+  width: auto;
   height: 705px;
   position: relative;
   display: flex;
@@ -663,8 +786,9 @@ header > .container {
 
 .button-play {
   position: absolute;
-  top: 288px;
-  left: 636px;
+  top: auto;
+  left: auto;
+  z-index: 100;
   width: 129.86px;
   height: 130px;
   border: 0;
@@ -689,6 +813,7 @@ header > .container {
 .price-items {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   height: 505px;
   text-align: center;
 }
