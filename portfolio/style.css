@@ -80,6 +80,47 @@
   }
 }
 
+@media (max-width: 904px) {
+  #price > .price-items > .standard {
+    margin-right: 12.5px;
+  }
+ 
+  #price > .price-items > .gold {
+    margin-left: 12.5px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 892px) {
+  #price > .price-items > .standard {
+    margin-right: 5.5px;
+  }
+ 
+  #price > .price-items > .gold {
+    margin-left: 5.5px;
+  }
+}
+
+@media (max-width: 885px) {
+  #price > .price-items > .standard {
+    margin-right: 2px;
+  }
+ 
+  #price > .price-items > .gold {
+    margin-left: 2px;
+  }
+}
+
+@media (max-width: 879px) {
+  #price > .price-items > .standard {
+    margin-right: 0;
+  }
+ 
+  #price > .price-items > .gold {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .header > .container,
   .main > .container,
@@ -137,8 +178,8 @@
     justify-content: center;
     align-items: flex-start;
     max-width: 620px;
-    width: 620px;
-    height: 1024px;
+    width: 100%;
+    height: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 127px;
     background-color: #000000; 
@@ -151,36 +192,26 @@
   .navigation-list > .nav-skills-item {
     position: absolute;
     top: 134px;
-    width: 150px;
-    text-align: left;
   }
 
   .navigation-list > .nav-portfolio-item {
     position: absolute;
     top: 223px;
-    width: 150px;
-    text-align: left;
   }
 
   .navigation-list > .nav-video-item {
     position: absolute;
     top: 312px;
-    width: 150px;
-    text-align: left;
   }
 
   .navigation-list > .nav-price-item {
     position: absolute;
     top: 401px;
-    width: 150px;
-    text-align: left;
   }
 
   .navigation-list > .nav-contacts-item {
     position: absolute;
     top: 490px;
-    width: 150px;
-    text-align: left;
   }
 
   .navigation-list.open {
@@ -304,14 +335,6 @@
     height: 64.69px;    
   }
 
-  #price > .price-items > .gold {
-    margin: 0;
-  }
-
-  #price > .price-items > .standard {
-    margin-right: 0;
-  }
-
   #contacts,
   #contacts > .contacts-container {
     min-height: 429px;
@@ -422,19 +445,6 @@
   }
 }
 
-@media (max-width: 590px) {
-  .navigation-list.open {
-    align-items: center;
-    padding-left: 50px;
-  }
-}
-
-@media (max-width: 430px) {
-  .navigation-list.open {
-    padding-left: 200px;
-  }
-}
-
 @media (max-width: 480px) {
   .section > .line {
     width: 300px;
@@ -484,6 +494,24 @@
 
   #contacts > .contacts-container > form > input, textarea {
     max-width: 300px;
+  }
+}
+
+@media (max-width: 460px) {
+  #hero {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navigation-list.open {
+    padding-left: 80px;
+  }
+}
+
+@media (max-width: 338px) {
+  .header > .container > .hamburger {
+    margin-left: 4.75px;
   }
 }
 
