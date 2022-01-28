@@ -288,6 +288,7 @@
   #skills > .skills-items > div {
     max-width: 300px;
     max-height: 224px;
+    width: 100%;
   }
 
   #skills > .skills-items > .digital-photography {
@@ -415,33 +416,33 @@
   }
 
   #skills > .skills-items > .digital-photography::before {
-    left: 109px;
+    left: 40%;
   }
 
   #skills > .skills-items > .video-shooting::before {
-    left: 110px;
+    left: 40%;
   }
 
   #skills > .skills-items > .retouch::before {
-    left: 107px;
+    left: 39%;
   }
 
   #skills > .skills-items > .audio::before {
-    left: 124px;
+    left: 44.5%;
   }
 
   #skills > .skills-items > .digital-photography > .skill-name, 
   #skills > .skills-items > .video-shooting > .skill-name,
   #skills > .skills-items > .retouch > .skill-name,
   #skills > .skills-items > .audio > .skill-name {
-    left: 0;
+    left: 3%;
   }
 
   #skills > .skills-items > .digital-photography > .skill-text, 
   #skills > .skills-items > .video-shooting > .skill-text,
   #skills > .skills-items > .retouch > .skill-text,
   #skills > .skills-items > .audio > .skill-text {
-    left: 0;
+    left: 3%;
   }
 }
 
@@ -509,9 +510,15 @@
   }
 }
 
-@media (max-width: 338px) {
+@media (max-width: 517px) {
   .header > .container > .hamburger {
-    margin-left: 4.75px;
+    margin-right: 10%;
+  }
+  .header > .container > .logo {
+    margin-left: 15%;
+  }
+  #hero > .hero-text {
+    margin-right: 5%;
   }
 }
 
@@ -907,13 +914,13 @@ header > .container {
   transition: 0.5s;
 }
 
-.portfolio-buttons > .button-autumn {
-  background-color: #BDAE82;
-  color: #000000;
-}
-
 .portfolio-buttons > button:hover {
   color: #FFFFFF;
+}
+
+.portfolio-button.active {
+  background-color: #BDAE82;
+  color: #000000;
 }
 
 .portfolio-items {
