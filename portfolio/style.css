@@ -487,6 +487,7 @@
   }
   #contacts > .contacts-container > h2 {
     max-width: 300px;
+    line-height: 39px;
   }
 
   #contacts > .contacts-container > form {
@@ -626,6 +627,7 @@ header > .container {
 }
 .logo:hover {
   filter: invert(24%) sepia(19%) saturate(506%) hue-rotate(7deg) brightness(89%) contrast(91%);
+  transform: scale(1.1);
 }
 
 .navigation {
@@ -686,13 +688,20 @@ header > .container {
   font-weight: 700;
 }
 
-.english {
+.english.active,
+.russian.active {
   color: #BDAE82;
 }
 
 .english,
 .russian {
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.english:hover,
+.russian:hover {
+  transform: scale(1.3);
 }
 
 .hamburger {
@@ -807,6 +816,19 @@ header > .container {
 .price-button:hover,
 .message-button:hover {
   color: #FFFFFF;
+  background: #BDAE82 radial-gradient(circle, transparent 1%, #BDAE82 1%) center/15000%;
+  box-shadow: inset -7em 0 0 0 #CFC39D, inset 7em 0 0 0 #CFC39D;
+}
+
+.hero-button:active,
+.price-button:active,
+.message-button:active {
+  transform: scale(0.8);
+  background-color: #CFC39D;
+  box-shadow: 0 2px 25px rgba(255, 255, 255, 0.2);
+  background-size: 100%;
+  transition:  0s;
+  box-shadow: none;
 }
 
 #skills {
@@ -916,6 +938,8 @@ header > .container {
 
 .portfolio-buttons > button:hover {
   color: #FFFFFF;
+  box-shadow: 0 0.5em 0.5em -0.4em #BDAE82;
+	transform: translatey(-0.65em);
 }
 
 .portfolio-button.active {
@@ -983,6 +1007,10 @@ header > .container {
 
 .button-play:hover {
   filter: invert(24%) sepia(19%) saturate(506%) hue-rotate(7deg) brightness(89%) contrast(91%);
+}
+
+.button-play:active {
+  transform: scale(0.5);
 }
 
 #price {
@@ -1204,4 +1232,12 @@ footer > .container {
 .twitter:hover,
 .pinterest:hover {
   filter: invert(25%) sepia(32%) saturate(314%) hue-rotate(5deg) brightness(96%) contrast(86%);
+  transform: scale(1.3);
+}
+
+.instagram:active,
+.facebook:active,
+.twitter:active,
+.pinterest:active {
+  transform: scale(0.5);
 }

@@ -54,3 +54,36 @@ function preloadImages(season) {
 } 
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 seasons.forEach((elem) => preloadImages(elem));
+
+// language change 
+import i18Obj from './translate.js';
+
+const enLanguage = document.querySelector('.english');
+const ruLanguage = document.querySelector('.russian');
+
+function getTranslation(language) {
+  const translationElements = document.querySelectorAll('[data-i18]');
+  translationElements.forEach((elem) => {
+    if (elem.placeholder) {
+      elem.placeholder = i18Obj[language][elem.dataset.i18];
+      elem.textContent = '';
+    } else {
+      elem.textContent = i18Obj[language][elem.dataset.i18];
+  }
+  });  
+}
+
+enLanguage.addEventListener('click', () => getTranslation('en'));
+ruLanguage.addEventListener('click', () => getTranslation('ru'));
+
+// language active button style
+enLanguage.classList.add('active');
+
+function addActiveClassLanguage(event) {
+  enLanguage.classList.remove('active');
+  ruLanguage.classList.remove('active');
+  event.target.classList.add('active');
+}
+
+enLanguage.addEventListener('click', addActiveClassLanguage);
+ruLanguage.addEventListener('click', addActiveClassLanguage);
