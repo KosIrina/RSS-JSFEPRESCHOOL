@@ -40,6 +40,16 @@
     margin-bottom: 5px;
   }
 
+  #portfolio > .portfolio-buttons > .button-summer:hover,
+  #portfolio > .portfolio-buttons > .button-autumn:hover {
+    transform: translatey(0.65em);
+  }
+
+  #portfolio > .portfolio-buttons > .button-winter:hover,
+  #portfolio > .portfolio-buttons > .button-spring:hover {
+    box-shadow: 0 -0.5em 0.5em -0.4em #BDAE82;
+  }
+
   #portfolio > .portfolio-items {
     justify-content: space-evenly;
   }
@@ -630,6 +640,10 @@ header > .container {
   transform: scale(1.1);
 }
 
+.logo:active {
+  transform: scale(0.5);
+}
+
 .navigation {
   margin-left: auto;
   width: 500px;
@@ -828,7 +842,6 @@ header > .container {
   box-shadow: 0 2px 25px rgba(255, 255, 255, 0.2);
   background-size: 100%;
   transition:  0s;
-  box-shadow: none;
 }
 
 #skills {
