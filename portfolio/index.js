@@ -87,3 +87,43 @@ function addActiveClassLanguage(event) {
 
 enLanguage.addEventListener('click', addActiveClassLanguage);
 ruLanguage.addEventListener('click', addActiveClassLanguage);
+
+// theme change
+const themeButton = document.querySelector('.theme-switcher');
+const body = document.querySelector('body');
+const logo = document.querySelector('.logo');
+const header = document.querySelector('.header-container');
+const hero = document.querySelector('.hero-container');
+const heroButton = document.querySelector('.hero-button');
+const contactsButton = document.querySelector('.message-button');
+const contactsContainer = document.querySelector('.contacts-section-container');
+const textarea = document.querySelector('textarea');
+const githubLink = document.querySelector('.github-link');
+const rssLink = document.querySelector('.rss-link');
+const instagram = document.querySelector('.instagram');
+const facebook = document.querySelector('.facebook');
+const twitter = document.querySelector('.twitter');
+const pinterest = document.querySelector('.pinterest');
+
+const navLinks = document.querySelectorAll('.navigation-link');
+const hamburgerLines = document.querySelectorAll('.hamburger-line');
+const header2Text = document.querySelectorAll('h2');
+const header3Text = document.querySelectorAll('h3');
+const priceSum = document.querySelectorAll('.price-sum');
+const inputs = document.querySelectorAll('input');
+
+const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest];
+
+function toggleTheme() {
+  themeElements.forEach((elem) => { elem.classList.toggle('light-theme') });
+  navLinks.forEach((elem) => { elem.classList.toggle('light-theme') });
+  hamburgerLines.forEach((elem) => { elem.classList.toggle('light-theme') });
+  header2Text.forEach((elem) => { elem.classList.toggle('light-theme') });
+  portfolioButtonsAll.forEach((elem) => { elem.classList.toggle('light-theme') });
+  header3Text.forEach((elem) => { elem.classList.toggle('light-theme') });
+  priceSum.forEach((elem) => { elem.classList.toggle('light-theme') });
+  inputs.forEach((elem) => { elem.classList.toggle('light-theme') });
+  themeButton.classList.toggle('open');
+}
+
+themeButton.addEventListener('click', toggleTheme);
