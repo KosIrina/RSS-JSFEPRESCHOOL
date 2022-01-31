@@ -1,3 +1,4 @@
+// hamburger + menu (<768px)
 const hamburger = document.querySelector('.hamburger');
 const menu = document.querySelector('.navigation-list');
 const nav = document.querySelector('.navigation');
@@ -18,4 +19,113 @@ function closeMenu(event) {
 
 nav.addEventListener('click', closeMenu);
 
-console.log('Всего 85 баллов:\n1.Вёрстка соответствует макету. Ширина экрана 768px +48: \n-блок <header> +6\n-секция hero +6\n-секция skills +6\n-секция portfolio +6\n-секция video +6\n-секция price +6\n-секция contacts +6\n-блок <footer> +6\n2.Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +15:\n-нет полосы прокрутки при ширине страницы от 1440рх до 768рх +5\n-нет полосы прокрутки при ширине страницы от 768рх до 480рх +5\n-нет полосы прокрутки при ширине страницы от 480рх до 320рх +5\n3.На ширине экрана 768рх и меньше реализовано адаптивное меню +22: \n-при ширине страницы 768рх панель навигации скрывается, появляется бургер-иконка +2\n-при нажатии на бургер-иконку справа плавно появляется адаптивное меню, бургер-иконка изменяется на крестик +4\n-высота адаптивного меню занимает всю высоту экрана. При ширине экрана 768-620рх вёрстка меню соответствует макету, когда экран становится уже, меню занимает всю ширину экрана +4\n-при нажатии на крестик адаптивное меню плавно скрывается уезжая за правую часть экрана, крестик превращается в бургер-иконку +4\n-бургер-иконка, которая при клике превращается в крестик, создана при помощи css-анимаций без использования изображений +2\n-ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +2\n-при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, крестик превращается в бургер-иконку +4');
+// portfolio images change
+const portfolioImages = document.querySelectorAll('.portfolio-image');
+const portfolioButtons = document.querySelector('.portfolio-buttons');
+
+function changeImages(event) {
+  if (event.target.classList.contains('portfolio-button')) {
+    let season = event.target.dataset.season;
+    portfolioImages.forEach((img, index) => img.src = `./assets/jpeg/portfolio-examples/${season}/${index + 1}.jpg`);    
+  }
+}
+
+portfolioButtons.addEventListener('click', changeImages);
+
+// portfolio active button style
+const portfolioButtonsAll = document.querySelectorAll('.portfolio-button');
+const autumnButton = document.querySelector('.button-autumn');
+
+autumnButton.classList.add('active');
+
+function addActiveClassPortfolio(event) {
+  portfolioButtonsAll.forEach((button) => { button.classList.remove('active') });
+  event.target.classList.add('active');
+}
+
+portfolioButtonsAll.forEach((elem) => { elem.addEventListener('click', addActiveClassPortfolio) });
+
+// portfolio images caching
+function preloadImages(season) {
+  for (let i = 1; i <= 6; i++) {
+    const img = new Image();
+    img.src = `./assets/jpeg/portfolio-examples/${season}/${i}.jpg`;   
+  }
+} 
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+seasons.forEach((elem) => preloadImages(elem));
+
+// language change 
+import i18Obj from './translate.js';
+
+const enLanguage = document.querySelector('.english');
+const ruLanguage = document.querySelector('.russian');
+
+function getTranslation(language) {
+  const translationElements = document.querySelectorAll('[data-i18]');
+  translationElements.forEach((elem) => {
+    if (elem.placeholder) {
+      elem.placeholder = i18Obj[language][elem.dataset.i18];
+      elem.textContent = '';
+    } else {
+      elem.textContent = i18Obj[language][elem.dataset.i18];
+  }
+  });  
+}
+
+enLanguage.addEventListener('click', () => getTranslation('en'));
+ruLanguage.addEventListener('click', () => getTranslation('ru'));
+
+// language active button style
+enLanguage.classList.add('active');
+
+function addActiveClassLanguage(event) {
+  enLanguage.classList.remove('active');
+  ruLanguage.classList.remove('active');
+  event.target.classList.add('active');
+}
+
+enLanguage.addEventListener('click', addActiveClassLanguage);
+ruLanguage.addEventListener('click', addActiveClassLanguage);
+
+// theme change
+const themeButton = document.querySelector('.theme-switcher');
+const body = document.querySelector('body');
+const logo = document.querySelector('.logo');
+const header = document.querySelector('.header-container');
+const hero = document.querySelector('.hero-container');
+const heroButton = document.querySelector('.hero-button');
+const contactsButton = document.querySelector('.message-button');
+const contactsContainer = document.querySelector('.contacts-section-container');
+const textarea = document.querySelector('textarea');
+const githubLink = document.querySelector('.github-link');
+const rssLink = document.querySelector('.rss-link');
+const instagram = document.querySelector('.instagram');
+const facebook = document.querySelector('.facebook');
+const twitter = document.querySelector('.twitter');
+const pinterest = document.querySelector('.pinterest');
+
+const navLinks = document.querySelectorAll('.navigation-link');
+const hamburgerLines = document.querySelectorAll('.hamburger-line');
+const header2Text = document.querySelectorAll('h2');
+const header3Text = document.querySelectorAll('h3');
+const priceSum = document.querySelectorAll('.price-sum');
+const inputs = document.querySelectorAll('input');
+
+const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest];
+
+function toggleTheme() {
+  themeElements.forEach((elem) => { elem.classList.toggle('light-theme') });
+  navLinks.forEach((elem) => { elem.classList.toggle('light-theme') });
+  hamburgerLines.forEach((elem) => { elem.classList.toggle('light-theme') });
+  header2Text.forEach((elem) => { elem.classList.toggle('light-theme') });
+  portfolioButtonsAll.forEach((elem) => { elem.classList.toggle('light-theme') });
+  header3Text.forEach((elem) => { elem.classList.toggle('light-theme') });
+  priceSum.forEach((elem) => { elem.classList.toggle('light-theme') });
+  inputs.forEach((elem) => { elem.classList.toggle('light-theme') });
+  themeButton.classList.toggle('open');
+}
+
+themeButton.addEventListener('click', toggleTheme);
+
+console.log('Отметка - 80 балла(ов)\n\n1.Смена изображений в секции portfolio +25\n-при кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n-кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n2.Перевод страницы на два языка +25\n-при клике по надписи ru англоязычная страница переводится на русский язык +10\n-при клике по надписи en русскоязычная страница переводится на английский язык +10\n-надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5\n3.Переключение светлой и тёмной темы +25\nНа страницу добавлен переключатель при клике по которому:\n-тёмная тема приложения сменяется светлой +10\n-светлая тема приложения сменяется тёмной +10\n-после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n4.Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема НЕ сохраняются при перезагрузке страницы -5\n5.Дополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5')
