@@ -105,6 +105,8 @@ const facebook = document.querySelector('.facebook');
 const twitter = document.querySelector('.twitter');
 const pinterest = document.querySelector('.pinterest');
 const videoPlayer = document.querySelector('.video-player');
+const videoCurrentTime = document.querySelector('.video-current-time');
+const videoDuration = document.querySelector('.video-duration');
 
 const navLinks = document.querySelectorAll('.navigation-link');
 const hamburgerLines = document.querySelectorAll('.hamburger-line');
@@ -113,7 +115,7 @@ const header3Text = document.querySelectorAll('h3');
 const priceSum = document.querySelectorAll('.price-sum');
 const inputs = document.querySelectorAll('input');
 
-const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest, videoPlayer];
+const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest, videoPlayer, videoCurrentTime, videoDuration];
 
 function toggleTheme() {
   themeElements.forEach((elem) => { elem.classList.toggle('light-theme') });
@@ -137,6 +139,30 @@ const playPauseButton = document.querySelector('.controls-button-play');
 const volumeMuteButton = document.querySelector('.controls-button-volume');
 const videoProgress = document.querySelector('.play-progress');
 const volumeLevel = document.querySelector('.volume-level');
+const fullScreenButton = document.querySelector('.controls-button-fullscreen');
+
+function videoTime(time) { 
+  time = Math.floor(time);
+  let minutes = Math.floor(time / 60);
+  let seconds = Math.floor(time - minutes * 60);
+  let minutesNew = minutes;
+  let secondsNew = seconds;
+  if(minutes < 10) {
+  minutesNew = '0' + minutes;
+  }
+  if(seconds < 10) {
+  secondsNew = '0' + seconds;
+  }
+  return minutesNew + ':' + secondsNew;
+}
+
+video.addEventListener('canplay', function () {
+  videoDuration.innerHTML = videoTime(video.duration);
+})
+
+video.addEventListener('timeupdate', function () {
+  videoCurrentTime.innerHTML = videoTime(video.currentTime);
+})
 
 function hidePoster() {
   mainPlayButton.classList.add('hidden');
@@ -229,3 +255,10 @@ function isEnded() {
 };
 
 video.addEventListener('ended', isEnded);
+
+function goFullScreen() {
+  console.dir(video);
+  if (video.webkitSupportsFullscreen) video.webkitEnterFullScreen();
+};
+
+fullScreenButton.addEventListener('click', goFullScreen);

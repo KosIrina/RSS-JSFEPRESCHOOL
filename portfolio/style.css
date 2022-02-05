@@ -481,6 +481,24 @@
   }
 }
 
+@media (max-width: 700px) {
+  .video-player-controls > .controls-button-play,
+  .video-player-controls > .controls-button-volume {
+    width: 24px;
+    height: 20px;
+  }
+
+  .video-player-controls > .controls-button-fullscreen {
+    width: 24px;
+    height: 24px;
+  }
+
+  .video-player-controls > .video-current-time,
+  .video-player-controls > .video-duration {
+    font-size: 15px;
+  }
+}
+
 @media (max-width: 517px) {
   .header > .container > .hamburger {
     margin-right: 7%;
@@ -541,7 +559,37 @@
 
   #video > .video-player {
     max-width: 480px;
-    max-height: 250px;
+    max-height: 271px;
+  }
+
+  .video-player-controls > .controls-button-play,
+  .video-player-controls > .controls-button-volume {
+    width: 20px;
+    height: 13px;
+  }
+
+  .video-player-controls > .controls-button-volume {
+    height: 16px;
+  }
+
+  .video-player-controls > .controls-button-fullscreen {
+    width: 20px;
+    height: 20px;
+  }
+
+  .video-player-controls > .video-current-time,
+  .video-player-controls > .video-duration {
+    font-size: 12px;
+  }
+
+  .video-player-controls > .play-progress,
+  .video-player-controls > .volume-level {
+    width: 35%;
+    height: 5px;
+  }
+
+  .video-player-controls > .volume-level {
+    width: 25%;
   }
   
   #price > .price-items > .standard, 
@@ -1205,6 +1253,10 @@ p {
   border-bottom: none;
 } 
 
+.video-player-viewer:fullscreen {
+  border: none;
+}
+
 .button-play {
   position: absolute;
   top: auto;
@@ -1279,9 +1331,9 @@ p {
 
 .play-progress,
 .volume-level {
-  width: calc(75% - 100px);
+  width: 50%; 
   height: 10px;
-  margin: 0;
+  margin: 0 5px 0 5px;
   padding: 0;
   outline: none;
   border: none;
@@ -1290,8 +1342,19 @@ p {
   -webkit-appearance: none;
 }
 
+.video-current-time,
+.video-duration {
+  width: 60px;
+  text-align: center;
+}
+
+.video-current-time.light-theme,
+.video-duration.light-theme {
+  color: #C3C3C3;
+}
+
 .volume-level {
-  width: calc(25% - 80px);
+  width: 13%;
   background: linear-gradient(to right, #BDAE82 0%, #BDAE82 40%, #C3C3C3 40%, #C3C3C3 100%);
 }
 
@@ -1305,9 +1368,25 @@ p {
   background: #FFFFFF;
 }
 
+.controls-button-fullscreen {
+  width: 40px;
+  height: 40px;
+  background-image: url('./assets/svg/fullscreen.svg');
+  filter: invert(95%) sepia(11%) saturate(0%) hue-rotate(143deg) brightness(81%) contrast(92%);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 .controls-button-play:hover,
 .controls-button-volume:hover {
   filter: invert(22%) sepia(10%) saturate(941%) hue-rotate(7deg) brightness(89%) contrast(87%);
+}
+
+.controls-button-fullscreen:hover {
+  filter: invert(70%) sepia(10%) saturate(941%) hue-rotate(7deg) brightness(89%) contrast(87%);
 }
 
 #price {

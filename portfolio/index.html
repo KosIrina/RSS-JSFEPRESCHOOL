@@ -106,13 +106,16 @@
 
                 <div class="video-player">
                     <div class="video-player-poster"></div>
-                    <video class="video-player-viewer" src="./assets/video/video.mp4"></video>
+                    <video class="video-player-viewer" src="./assets/video/video.mp4" preload="auto"></video>
                     <button class="button-play"></button>
                     <div class="video-player-controls">
                         <div class="controls-button-play"></div>
+                        <div class="video-current-time">00:00</div>
                         <input type="range" value="0" min="0" max="100" step="1" class="play-progress">
+                        <div class="video-duration">00:00</div>
                         <div class="controls-button-volume"></div>
                         <input type="range" value="40" min="0" max="100" step="1" class="volume-level">
+                        <div class="controls-button-fullscreen"></div>
                     </div>
                 </div>                 
             </section>
