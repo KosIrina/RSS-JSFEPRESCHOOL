@@ -104,6 +104,7 @@ const instagram = document.querySelector('.instagram');
 const facebook = document.querySelector('.facebook');
 const twitter = document.querySelector('.twitter');
 const pinterest = document.querySelector('.pinterest');
+const videoPlayer = document.querySelector('.video-player');
 
 const navLinks = document.querySelectorAll('.navigation-link');
 const hamburgerLines = document.querySelectorAll('.hamburger-line');
@@ -112,7 +113,7 @@ const header3Text = document.querySelectorAll('h3');
 const priceSum = document.querySelectorAll('.price-sum');
 const inputs = document.querySelectorAll('input');
 
-const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest];
+const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest, videoPlayer];
 
 function toggleTheme() {
   themeElements.forEach((elem) => { elem.classList.toggle('light-theme') });
@@ -128,4 +129,103 @@ function toggleTheme() {
 
 themeButton.addEventListener('click', toggleTheme);
 
-console.log('Отметка - 80 балла(ов)\n\n1.Смена изображений в секции portfolio +25\n-при кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n-кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n2.Перевод страницы на два языка +25\n-при клике по надписи ru англоязычная страница переводится на русский язык +10\n-при клике по надписи en русскоязычная страница переводится на английский язык +10\n-надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5\n3.Переключение светлой и тёмной темы +25\nНа страницу добавлен переключатель при клике по которому:\n-тёмная тема приложения сменяется светлой +10\n-светлая тема приложения сменяется тёмной +10\n-после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n4.Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема НЕ сохраняются при перезагрузке страницы -5\n5.Дополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5')
+//video
+const mainPlayButton = document.querySelector('.button-play');
+const videoPoster = document.querySelector('.video-player-poster');
+const video = document.querySelector('video.video-player-viewer');
+const playPauseButton = document.querySelector('.controls-button-play');
+const volumeMuteButton = document.querySelector('.controls-button-volume');
+const videoProgress = document.querySelector('.play-progress');
+const volumeLevel = document.querySelector('.volume-level');
+
+function hidePoster() {
+  mainPlayButton.classList.add('hidden');
+  videoPoster.classList.add('hidden');
+}
+
+mainPlayButton.addEventListener('click', hidePoster);
+
+let isPlay = false;
+let progression;
+
+function changeProgress() {
+  let progress = video.currentTime / video.duration;
+  videoProgress.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${(progress * 1000) / 10}%, #C3C3C3 ${(progress * 1000) / 10}%, #C3C3C3 100%)`;
+  videoProgress.value = (progress * 1000) / 10;
+};
+
+function changeCurrentProgress() {
+  const value = this.value;
+  video.currentTime = (video.duration * value) / 100;
+  this.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #C3C3C3 ${value}%, #C3C3C3 100%)`;
+  videoProgress.value = value;
+}; 
+
+videoProgress.addEventListener('input', changeCurrentProgress); 
+
+function playVideo() {
+  if(!isPlay) {
+    video.play();
+    isPlay = true;
+    playPauseButton.classList.add('pause');
+    mainPlayButton.classList.add('hidden');
+    changeProgress();
+    progression = window.setInterval(changeProgress, 200); 
+  } else {
+    video.pause();
+    isPlay = false;
+    playPauseButton.classList.remove('pause');
+    mainPlayButton.classList.remove('hidden');
+    clearInterval(progression);
+  };
+};
+
+playPauseButton.addEventListener('click', playVideo);
+mainPlayButton.addEventListener('click', playVideo);
+video.addEventListener('click', playVideo);
+
+video.volume = 0.4;
+
+function changeVolume(){
+  let vol = this.value;
+  video.volume = vol / 100;
+  volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${vol}%, #C3C3C3 ${vol}%, #C3C3C3 100%)`;
+  
+  if (vol == 0) { 
+    volumeMuteButton.classList.add('muted');
+  } else { 
+    video.muted = false;
+    volumeMuteButton.classList.remove('muted');
+  };
+};
+
+volumeLevel.addEventListener('input', changeVolume);
+
+function muteVideo() {
+  video.muted = !video.muted;
+  if (volumeMuteButton.classList.contains('muted') && video.volume == 0) {
+    video.volume = 0.4;
+    video.muted = false;
+    volumeMuteButton.classList.remove('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${video.volume * 100}%, #C3C3C3 ${video.volume * 100}%, #C3C3C3 100%)`;
+    volumeLevel.value = video.volume * 100;
+  } else if (video.muted) {
+    volumeMuteButton.classList.add('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 0%, #C3C3C3 0%, #C3C3C3 100%)`;
+    volumeLevel.value = 0;
+  } else {
+    volumeMuteButton.classList.remove('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${video.volume * 100}%, #C3C3C3 ${video.volume * 100}%, #C3C3C3 100%)`;
+    volumeLevel.value = video.volume * 100;
+  };
+};
+
+volumeMuteButton.addEventListener('click', muteVideo);
+
+function isEnded() {
+  isPlay = false;
+  playPauseButton.classList.remove('pause');
+  mainPlayButton.classList.remove('hidden');
+};
+
+video.addEventListener('ended', isEnded);
