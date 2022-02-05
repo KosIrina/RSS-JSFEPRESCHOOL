@@ -104,6 +104,9 @@ const instagram = document.querySelector('.instagram');
 const facebook = document.querySelector('.facebook');
 const twitter = document.querySelector('.twitter');
 const pinterest = document.querySelector('.pinterest');
+const videoPlayer = document.querySelector('.video-player');
+const videoCurrentTime = document.querySelector('.video-current-time');
+const videoDuration = document.querySelector('.video-duration');
 
 const navLinks = document.querySelectorAll('.navigation-link');
 const hamburgerLines = document.querySelectorAll('.hamburger-line');
@@ -112,7 +115,7 @@ const header3Text = document.querySelectorAll('h3');
 const priceSum = document.querySelectorAll('.price-sum');
 const inputs = document.querySelectorAll('input');
 
-const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest];
+const themeElements = [body, logo, header, enLanguage, ruLanguage, hero, heroButton, contactsButton, menu, contactsContainer, textarea, githubLink, rssLink, instagram, facebook, twitter, pinterest, videoPlayer, videoCurrentTime, videoDuration];
 
 function toggleTheme() {
   themeElements.forEach((elem) => { elem.classList.toggle('light-theme') });
@@ -128,4 +131,136 @@ function toggleTheme() {
 
 themeButton.addEventListener('click', toggleTheme);
 
-console.log('Отметка - 80 балла(ов)\n\n1.Смена изображений в секции portfolio +25\n-при кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n-кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n2.Перевод страницы на два языка +25\n-при клике по надписи ru англоязычная страница переводится на русский язык +10\n-при клике по надписи en русскоязычная страница переводится на английский язык +10\n-надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5\n3.Переключение светлой и тёмной темы +25\nНа страницу добавлен переключатель при клике по которому:\n-тёмная тема приложения сменяется светлой +10\n-светлая тема приложения сменяется тёмной +10\n-после смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n4.Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема НЕ сохраняются при перезагрузке страницы -5\n5.Дополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5')
+//video
+const mainPlayButton = document.querySelector('.button-play');
+const videoPoster = document.querySelector('.video-player-poster');
+const video = document.querySelector('video.video-player-viewer');
+const playPauseButton = document.querySelector('.controls-button-play');
+const volumeMuteButton = document.querySelector('.controls-button-volume');
+const videoProgress = document.querySelector('.play-progress');
+const volumeLevel = document.querySelector('.volume-level');
+const fullScreenButton = document.querySelector('.controls-button-fullscreen');
+
+function videoTime(time) { 
+  time = Math.floor(time);
+  let minutes = Math.floor(time / 60);
+  let seconds = Math.floor(time - minutes * 60);
+  let minutesNew = minutes;
+  let secondsNew = seconds;
+  if(minutes < 10) {
+  minutesNew = '0' + minutes;
+  }
+  if(seconds < 10) {
+  secondsNew = '0' + seconds;
+  }
+  return minutesNew + ':' + secondsNew;
+}
+
+video.addEventListener('canplay', function () {
+  videoDuration.innerHTML = videoTime(video.duration);
+})
+
+video.addEventListener('timeupdate', function () {
+  videoCurrentTime.innerHTML = videoTime(video.currentTime);
+})
+
+function hidePoster() {
+  mainPlayButton.classList.add('hidden');
+  videoPoster.classList.add('hidden');
+}
+
+mainPlayButton.addEventListener('click', hidePoster);
+
+let isPlay = false;
+let progression;
+
+function changeProgress() {
+  let progress = video.currentTime / video.duration;
+  videoProgress.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${(progress * 1000) / 10}%, #C3C3C3 ${(progress * 1000) / 10}%, #C3C3C3 100%)`;
+  videoProgress.value = (progress * 1000) / 10;
+};
+
+function changeCurrentProgress() {
+  const value = this.value;
+  video.currentTime = (video.duration * value) / 100;
+  this.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #C3C3C3 ${value}%, #C3C3C3 100%)`;
+  videoProgress.value = value;
+}; 
+
+videoProgress.addEventListener('input', changeCurrentProgress); 
+
+function playVideo() {
+  if(!isPlay) {
+    video.play();
+    isPlay = true;
+    playPauseButton.classList.add('pause');
+    mainPlayButton.classList.add('hidden');
+    changeProgress();
+    progression = window.setInterval(changeProgress, 200); 
+  } else {
+    video.pause();
+    isPlay = false;
+    playPauseButton.classList.remove('pause');
+    mainPlayButton.classList.remove('hidden');
+    clearInterval(progression);
+  };
+};
+
+playPauseButton.addEventListener('click', playVideo);
+mainPlayButton.addEventListener('click', playVideo);
+video.addEventListener('click', playVideo);
+
+video.volume = 0.4;
+
+function changeVolume(){
+  let vol = this.value;
+  video.volume = vol / 100;
+  volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${vol}%, #C3C3C3 ${vol}%, #C3C3C3 100%)`;
+  
+  if (vol == 0) { 
+    volumeMuteButton.classList.add('muted');
+  } else { 
+    video.muted = false;
+    volumeMuteButton.classList.remove('muted');
+  };
+};
+
+volumeLevel.addEventListener('input', changeVolume);
+
+function muteVideo() {
+  video.muted = !video.muted;
+  if (volumeMuteButton.classList.contains('muted') && video.volume == 0) {
+    video.volume = 0.4;
+    video.muted = false;
+    volumeMuteButton.classList.remove('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${video.volume * 100}%, #C3C3C3 ${video.volume * 100}%, #C3C3C3 100%)`;
+    volumeLevel.value = video.volume * 100;
+  } else if (video.muted) {
+    volumeMuteButton.classList.add('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 0%, #C3C3C3 0%, #C3C3C3 100%)`;
+    volumeLevel.value = 0;
+  } else {
+    volumeMuteButton.classList.remove('muted');
+    volumeLevel.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${video.volume * 100}%, #C3C3C3 ${video.volume * 100}%, #C3C3C3 100%)`;
+    volumeLevel.value = video.volume * 100;
+  };
+};
+
+volumeMuteButton.addEventListener('click', muteVideo);
+
+function isEnded() {
+  isPlay = false;
+  playPauseButton.classList.remove('pause');
+  mainPlayButton.classList.remove('hidden');
+};
+
+video.addEventListener('ended', isEnded);
+
+function goFullScreen() {
+  console.dir(video);
+  if (video.webkitSupportsFullscreen) video.webkitEnterFullScreen();
+};
+
+fullScreenButton.addEventListener('click', goFullScreen);
+
+console.log('Всего 70 балла(ов):\n\n1.Вёрстка +10:\n-вёрстка видеоплеера: есть само видео, в панели управления есть кнопка Play/Pause, прогресс-бар, кнопка Volume/Mute, регулятор громкости звука +5\n-в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5\n\n2.Кнопка Play/Pause на панели управления +10:\n-при клике по кнопке Play/Pause запускается или останавливается проигрывание видео +5\n-внешний вид и функционал кнопки изменяется в зависимости от того, проигрывается ли видео в данный момент +5\n\n3.Прогресс-бар отображает прогресс проигрывания видео. При перемещении ползунка прогресс-бара вручную меняется текущее время проигрывания видео. Разный цвет прогресс-бара до и после ползунка +10\n\n4.При перемещении ползунка регулятора громкости звука можно сделать звук громче или тише. Разный цвет регулятора громкости звука до и после ползунка +10\n\n5.При клике по кнопке Volume/Mute можно включить или отключить звук. Одновременно с включением/выключением звука меняется внешний вид кнопки. Также внешний вид кнопки меняется, если звук включают или выключают перетягиванием регулятора громкости звука от нуля или до нуля +10\n\n6.Кнопка Play/Pause в центре видео +10:\n-есть кнопка Play/Pause в центре видео при клике по которой запускается видео и отображается панель управления +5\n-когда видео проигрывается, кнопка Play/Pause в центре видео скрывается, когда видео останавливается, кнопка снова отображается +5\n\n7.Очень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10:\n-высокое качество оформления приложения предполагает собственное оригинальное оформление равное или отличающееся в лучшую сторону по сравнению с демо\n~~~~добавлены отображение текущего времени проигрывания, длительности видео, переключение на полноэкранный режим');
