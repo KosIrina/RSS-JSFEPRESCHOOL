@@ -156,11 +156,8 @@ function videoTime(time) {
   return minutesNew + ':' + secondsNew;
 }
 
-video.addEventListener('canplay', function () {
-  videoDuration.innerHTML = videoTime(video.duration);
-})
-
 video.addEventListener('timeupdate', function () {
+  videoDuration.innerHTML = videoTime(video.duration);
   videoCurrentTime.innerHTML = videoTime(video.currentTime);
 })
 
