@@ -16,6 +16,61 @@ html {
   scroll-behavior: smooth; 
 }
 
+@media (max-width: 1043px) {
+  .header-container > .tmdb-logo {
+    width: 110px;    
+  }
+}
+
+@media (max-width: 873px) {
+  .header > .header-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header-container > h1 {
+    padding: 0;    
+  }
+}
+
+@media (max-width: 540px) {
+  .footer > .footer-container {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .footer-container > .github-link {
+    padding-bottom: 5px;
+  }
+
+  .footer-container > p {
+    padding-bottom: 15px;
+  }
+
+  .footer-container > .rss-link {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 423px) {
+  .header-container > h1 {
+    font-size: 22px;
+    line-height: 30px;    
+  }
+}
+
+@media (max-width: 400px) {
+  .main > .main-container {
+    padding: 0;        
+  }
+
+  .main-container > .movie {
+    margin: 10px;
+    box-shadow: 0px 0px 8px 2px rgb(0 0 0 / 33%);
+  }
+}
+
 body {
   max-width: 100%;
   min-height: 100vh;
