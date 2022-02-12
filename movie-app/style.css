@@ -247,6 +247,20 @@ input::-webkit-search-cancel-button {
   color: #000000;
 }
 
+.movie-overview::-webkit-scrollbar {
+  width: 5px;
+}
+
+.movie-overview::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px -5px rgba(129, 200, 255, 0.7) inset;
+  background-color: #f3f2f2;
+}
+
+.movie-overview::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #d881db, #0e0f52);
+}
+
 .movie:hover .movie-overview {
   transform: translateY(0);
 }
