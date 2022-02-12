@@ -265,6 +265,10 @@ input::-webkit-search-cancel-button {
   transform: translateY(0);
 }
 
+.overview-text {
+  text-align: justify;
+}
+
 .footer > .container {
   min-height: 80px;
   display: flex;
