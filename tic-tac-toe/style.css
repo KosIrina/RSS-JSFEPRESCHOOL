@@ -1,0 +1,93 @@
+@font-face {
+  font-family: Lora;
+  src: url("assets/fonts/Lora-Regular.ttf");
+}
+  
+* {
+  box-sizing: border-box;
+}
+    
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to right top, #a64c4c, #b86c64, #ca8b7f, #daab9d, #eacabe, #e8d3c5, #e7dbcf, #e7e2da, #d5d5cc, #c3c7c0, #b3bab4, #a3aca9);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  font-family: Lora, serif;
+  font-weight: 400; 
+  font-size: 20px;
+  line-height: 50px; 
+  text-align: left;
+  color: #353535;
+}  
+  
+h1 {
+  margin: 0;
+  padding: 30px;
+  font-weight: 700; 
+  font-size: 33px;
+  line-height: 50px; 
+  text-shadow: 3px 5px 2px #cecece;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.footer > .container {
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+    
+.github-link {
+  position: relative;
+  padding-left: 34px;
+  text-decoration: none;
+  color: #353535;
+  transition: 0.5s;
+}
+  
+.github-link:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 1px;
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/svg/logo_github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+    
+.rss-link {
+  width: 121px;
+  height: 45px;
+  background-image: url("./assets/svg/logo_rs_school_js.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+  
+.github-link:hover,
+.rss-link:hover {
+  filter: invert(13%) sepia(20%) saturate(0%) hue-rotate(205deg) brightness(107%) contrast(82%);
+  transform: scale(1.05);
+}
