@@ -165,8 +165,8 @@ function getGameResult() {
         scoreArr.push(gameWinner);
     }
     
-    console.log(gameWinner);
-    console.log(scoreArr);
+    //console.log(gameWinner);
+    //console.log(scoreArr);
 }
 
 function addToScore() {
@@ -236,4 +236,35 @@ function muteAudio() {
     })
   };
   
-  volumeButton.addEventListener('click', muteAudio);
+volumeButton.addEventListener('click', muteAudio);
+  
+function setLocalStorage() {
+    const data = JSON.stringify(scoreArr);
+    
+    if (!localStorage.getItem('KosIrina')) {
+        localStorage.clear();
+        localStorage.setItem('KosIrina', data);
+    } else {
+        localStorage.setItem('KosIrina', data);
+    }
+  }
+
+window.addEventListener('beforeunload', setLocalStorage);
+
+function addToScoreFromLocalStorage(elem, index) {
+    let newRow = scoreTableBody.insertRow(-1);
+    let newCell1 = newRow.insertCell(0);
+    newCell1.textContent = `${elem['winner']}`;
+    let newCell2 = newRow.insertCell(1);
+    newCell2.textContent = `${elem['moves']}`;
+}
+
+function getLocalStorage() {
+    const arrFromLocalStorage = JSON.parse(localStorage.getItem('KosIrina'));
+    arrFromLocalStorage.forEach(addToScoreFromLocalStorage);
+    scoreArr = scoreArr.concat(arrFromLocalStorage);
+    //console.log(arrFromLocalStorage);
+    //console.log(scoreArr);
+}
+  
+window.addEventListener('load', getLocalStorage);
