@@ -12,6 +12,7 @@ const restartButton = document.querySelector('.restart-game');
 const githubLink = document.querySelector('.github-link');
 const whosTurn = document.querySelector('.x-or-o');
 const volumeButton = document.querySelector('.volume');
+const scoreTableBody = document.querySelector('.table-body');
 let numberOfMoves = 0;
 const winningOptions = [
     [0, 1, 2],
@@ -24,6 +25,9 @@ const winningOptions = [
     [2, 4, 6]
 ];
 let result = '';
+let winnerName = '';
+let gameWinner = {};
+let scoreArr = [];
 
 cells.forEach((elem) => {
     elem.addEventListener('click', event => {
@@ -37,7 +41,7 @@ cells.forEach((elem) => {
         if (numberOfMoves === 9 && result == '') {
             whosTurn.innerHTML = '-';
             announceDraw(numberOfMoves);
-            numberOfMoves = 0;
+            /* numberOfMoves = 0; */
         }
     })
 })
@@ -50,16 +54,16 @@ function checkIfWin() {
             result = 'X';
             whosTurn.innerHTML = '-';
             announceWinner(result, numberOfMoves);
-            numberOfMoves = 0;
-            result = '';
+            /* numberOfMoves = 0;
+            result = ''; */
         } else if (cells[winningOptions[i][0]].classList.contains('circle') == true && cells[winningOptions[i][1]].classList.contains('circle') == true && cells[winningOptions[i][2]].classList.contains('circle') == true) {
             //console.log('O win');
             //console.log(numberOfMoves);
             result = 'O';
             whosTurn.innerHTML = '-';
             announceWinner(result, numberOfMoves);
-            numberOfMoves = 0;
-            result = '';
+            /* numberOfMoves = 0;
+            result = ''; */
         } 
     }
 }
@@ -74,6 +78,18 @@ function announceWinner(winner, moves) {
     winnerInfo.classList.add('winner-info');
     winnerInfo.textContent = `The Winner is "${winner}" !`;
     gameResultInfo.append(winnerInfo);
+
+    const winnerNameDiv = document.createElement('div');
+    winnerNameDiv.classList.add('winner-name-block');
+    gameResultInfo.append(winnerNameDiv);
+
+    const winnerNameBlock = document.querySelector('.winner-name-block');
+    const winnerNameText = document.createElement('input');
+    winnerNameText.classList.add('winner-name-field');
+    winnerNameText.setAttribute('type', 'text');
+    winnerNameText.setAttribute('placeholder', `Enter winner's name`);
+    winnerNameText.setAttribute('maxlength', '12');
+    winnerNameBlock.append(winnerNameText);
 
     const movesNumber = document.createElement('div');
     movesNumber.classList.add('moves-number');
@@ -120,7 +136,63 @@ function restartGame() {
     numberOfMoves = 0;
 }
 
+function getGameResult() {
+    const winnerInfoAnnounce = document.querySelector('.winner-info');
+    const winnerNameField = document.querySelector('.winner-name-field');
+
+    if (winnerInfoAnnounce.innerHTML === 'Game ended in a draw!') {
+        gameWinner = {
+            winner: 'Draw game! No winner',
+            moves: `${numberOfMoves}`
+        };
+    } else if (winnerNameField.value === '') {
+        gameWinner = {
+            winner: `No name - "${result}"`,
+            moves: `${numberOfMoves}`
+        };
+    } else {
+        let winnerValue = (winnerNameField.value).charAt(0).toUpperCase() + (winnerNameField.value).slice(1);
+        gameWinner = {
+            winner: `${winnerValue} - "${result}"`,
+            moves: `${numberOfMoves}`
+        };
+    }
+
+    if (scoreArr.length < 10) {
+        scoreArr.push(gameWinner);
+    } else {
+        scoreArr.shift();
+        scoreArr.push(gameWinner);
+    }
+    
+    console.log(gameWinner);
+    console.log(scoreArr);
+}
+
+function addToScore() {
+    if (scoreTableBody.rows.length < 10) {
+        let newRow = scoreTableBody.insertRow(-1);
+        let newCell1 = newRow.insertCell(0);
+        newCell1.textContent = `${gameWinner['winner']}`;
+        let newCell2 = newRow.insertCell(1);
+        newCell2.textContent = `${gameWinner['moves']}`;
+    } else {
+        scoreTableBody.deleteRow(0);
+        let newRow = scoreTableBody.insertRow(-1);
+        let newCell1 = newRow.insertCell(0);
+        newCell1.textContent = `${gameWinner['winner']}`;
+        let newCell2 = newRow.insertCell(1);
+        newCell2.textContent = `${gameWinner['moves']}`;
+    }
+}
+
 function closeWrapper() {
+    getGameResult();
+    addToScore();
+    
+    numberOfMoves = 0;
+    result = '';
+
     gameArea.style.pointerEvents = 'none';
     gameResultInfo.innerHTML = '';
     gameResultWrapper.style.display = 'none';
@@ -128,6 +200,12 @@ function closeWrapper() {
 }
 
 function playAgain() {
+    getGameResult();
+    addToScore();
+
+    numberOfMoves = 0;
+    result = '';
+
     restartSound.play();
     whosTurn.innerHTML = 'X';
     cells.forEach((elem) => {
