@@ -16,7 +16,42 @@
     </header>
 
     <main class="main">
-        <div class="container main-container"></div>
+        <div class="container main-container">
+            <div class="volume"></div>
+            
+            <div class="whos-turn">
+                <p>Who's Turn: </p>
+                <p class="x-or-o">X</p>
+            </div>
+            
+            <div class="game-area">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <button class="button restart-game">RESTART GAME</button>
+        </div>
+
+        <div class="game-result-wrapper">
+            <div class="game-result-overlay"></div>
+            <div class="game-result-box">
+                <div class="game-result-info"></div>
+                <button class="button play-again">Play Again</button>
+            </div>
+    
+        </div>
+
+        <audio class="click-sound" src="./assets/audio/click.mp3"></audio>
+        <audio class="win-sound" src="./assets/audio/win.mp3"></audio>
+        <audio class="draw-sound" src="./assets/audio/draw.mp3"></audio>
+        <audio class="restart-sound" src="./assets/audio/restart.mp3"></audio>
     </main>
 
     <footer class="footer">
