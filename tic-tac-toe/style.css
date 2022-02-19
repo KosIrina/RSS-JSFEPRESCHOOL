@@ -225,6 +225,37 @@ p {
   transition: 0s;
 }
 
+.table-name {
+  min-width: 300px;
+  cursor: help;
+}
+
+[data-tooltip] {
+  position: relative; 
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip); 
+  position: absolute; 
+  width: 105px; 
+  left: 97.5px; 
+  top: 20px; 
+  background-color: rgba(255, 255, 255, 0.15); 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  pointer-events: none; 
+  opacity: 0; 
+  transition: 1s; 
+} 
+
+[data-tooltip]:hover::after {
+  opacity: 1; 
+  top: 49px;
+}
+
 .score-table {
   width: 320px;
 }
