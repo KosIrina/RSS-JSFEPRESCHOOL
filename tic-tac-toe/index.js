@@ -38,7 +38,7 @@ cells.forEach((elem) => {
         //console.log(numberOfMoves);
         //console.log(result);
         checkIfWin();
-        if (numberOfMoves === 9 && result == '') {
+        if (numberOfMoves === 9 && result === '') {
             whosTurn.innerHTML = '-';
             announceDraw(numberOfMoves);
             /* numberOfMoves = 0; */
