@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon/favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1>Tic Tac Toe</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container main-container">
+            <div class="volume"></div>
+            
+            <div class="whos-turn">
+                <p>Who's Turn: </p>
+                <p class="x-or-o">X</p>
+            </div>
+            
+            <div class="game-area">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <button class="button restart-game">RESTART GAME</button>
+
+            <p class="table-name" data-tooltip="(last 10 games)">Score Table</p>
+
+            <table class="score-table">
+                <thead class="table-header">
+                    <tr>
+                        <th class="winner-header-cell">Winner</th>
+                        <th class="moves-header-cell">Moves</th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-body">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="game-result-wrapper">
+            <div class="game-result-overlay"></div>
+            <div class="game-result-box">
+                <div class="game-result-info"></div>
+                <button class="button play-again">Play Again</button>
+            </div>
+    
+        </div>
+
+        <audio class="click-sound" src="./assets/audio/click.mp3"></audio>
+        <audio class="win-sound" src="./assets/audio/win.mp3"></audio>
+        <audio class="draw-sound" src="./assets/audio/draw.mp3"></audio>
+        <audio class="restart-sound" src="./assets/audio/restart.mp3"></audio>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="https://github.com/KosIrina" class="github-link">KosIrina</a>
+            <p>&copy;	2022</p>
+            <a href="https://rs.school/js-stage0/" class="rss-link"></a>
+        </div>
+    </footer>
+
+    <script type="module" src="index.js"></script>  
+</body>
+</html>
