@@ -1,0 +1,314 @@
+@font-face {
+  font-family: Lora;
+  src: url("assets/fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+ font-family: DancingScript;
+  src: url("assets/fonts/DancingScript-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+  
+html {
+  scroll-behavior: smooth; 
+}
+
+@media (max-width: 1043px) {
+  .header-container > .tmdb-logo {
+    width: 110px;    
+  }
+}
+
+@media (max-width: 873px) {
+  .header > .header-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header-container > h1 {
+    padding: 0;    
+  }
+}
+
+@media (max-width: 540px) {
+  .footer > .footer-container {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .footer-container > .github-link {
+    padding-bottom: 5px;
+  }
+
+  .footer-container > p {
+    padding-bottom: 15px;
+  }
+
+  .footer-container > .rss-link {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 423px) {
+  .header-container > h1 {
+    font-size: 22px;
+    line-height: 30px;    
+  }
+}
+
+@media (max-width: 400px) {
+  .main > .main-container {
+    padding: 0;        
+  }
+
+  .main-container > .movie {
+    margin: 10px;
+    box-shadow: 0px 0px 8px 2px rgb(0 0 0 / 33%);
+  }
+}
+
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(225deg, rgb(223, 223, 223) 15%, rgb(244, 219, 210) 49%, rgb(239, 239, 239) 89%);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  font-family: Lora, serif;
+  font-weight: 400; 
+  font-size: 20px;
+  line-height: 50px; 
+  text-align: left;
+  color: #353535;
+}
+
+h1 {
+  margin: 0;
+  padding: 0 40px 0 20px;
+  font-family: DancingScript, serif;
+  font-weight: 400; 
+  font-size: 30px;
+  line-height: 50px; 
+  font-style: italic;
+  text-shadow: 3px 5px 2px #cecece;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  padding: 18px 0 18px 20px;
+  font-family: Lora, serif;
+  font-weight: 600; 
+  font-size: 25px; 
+  font-variant: small-caps;
+  line-height: 30px;
+}
+
+h3 {
+  margin: 0;
+  padding: 0 20px 0 20px;
+  font-family: Lora, serif;
+  font-weight: 600; 
+  font-size: 20px;
+}
+
+p {
+  margin: 0 15px 0 15px;
+  padding: 0 5px 0 5px;
+  font-family: Lora, serif;
+  font-weight: 400; 
+  font-size: 17px;
+  line-height: 25px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.header-container {
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tmdb-logo {
+  min-width: 110px;
+  width: 280px;
+  min-height: 15px;
+  background-image: url("./assets/svg/TMDB.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+input {
+  position: relative;
+  width: 280px;
+  height: 50px;
+  margin: 5px 0 5px 0;
+  padding: 0 20px 0 20px;
+  background-color: rgba(255, 255, 255, 0.35); 
+  border: 2px solid #474747;
+  box-sizing: border-box;
+  border-radius: 45px;
+  font: inherit;
+  color: #2b2a2a;
+}
+
+input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background-image: url("./assets/png/cross.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 0px;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie {
+  width: 300px;
+  margin: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 16px 2px rgba(0, 0, 0, 0.33);
+  border-radius: 5px;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 450px;
+}
+
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.movie-info > p {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.movie-rating.green {
+  color: #009600;
+}
+
+.movie-rating.orange {
+  color: #e98000;
+}
+
+.movie-rating.red {
+  color: #bd0101;
+}
+
+.poster-and-overview {
+  position: relative;
+  overflow: hidden;
+  max-height: 450px;
+  height: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.release-year {
+  padding-top: 15px;
+  font-style: italic;
+}
+
+.movie-overview {
+  position: absolute;
+  padding: 5px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(101%);
+  overflow-y: auto;
+  transition: transform 0.5s ease-in;
+  color: #000000;
+}
+
+.movie-overview::-webkit-scrollbar {
+  width: 5px;
+}
+
+.movie-overview::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px -5px rgba(129, 200, 255, 0.7) inset;
+  background-color: #f3f2f2;
+}
+
+.movie-overview::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #d881db, #0e0f52);
+}
+
+.movie:hover .movie-overview {
+  transform: translateY(0);
+}
+
+.overview-text {
+  text-align: justify;
+}
+
+.footer > .container {
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+  
+.github-link {
+  position: relative;
+  padding-left: 34px;
+  text-decoration: none;
+  color: #353535;
+  transition: 0.5s;
+}
+
+.github-link:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 1px;
+  width: 30px;
+  height: 30px;
+  background-image: url("./assets/svg/logo_github.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+  
+.rss-link {
+  width: 121px;
+  height: 45px;
+  background-image: url("./assets/svg/logo_rs_school_js.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+
+.github-link:hover,
+.rss-link:hover {
+  filter: invert(13%) sepia(20%) saturate(0%) hue-rotate(205deg) brightness(107%) contrast(82%);
+  transform: scale(1.05);
+}
